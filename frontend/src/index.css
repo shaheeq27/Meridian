@@ -1,0 +1,57 @@
+@import 'tailwindcss';
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-paper: var(--paper);
+  --color-dim: var(--dim);
+  --color-faint: var(--faint);
+  --color-line: var(--line);
+  --color-saffron: var(--saffron);
+  --color-tide: var(--tide);
+  --color-storm: #e5584a;
+  --color-leaf: var(--leaf);
+--font-display: 'Instrument Serif', Georgia, serif;
+  --font-sans: 'Geist', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, monospace;
+}
+
+@layer base {
+  :root {
+    --ink: #0a0d12; --ink-2: #10151c; --ink-3: #171e27;
+    --paper: #ece6d8; --dim: #9aa3ad; --faint: #5d6772;
+    --line: rgb(236 230 216 / 0.09); --dot: rgb(236 230 216 / 0.04);
+    --saffron: #f0a33c; --tide: #78d0c3; --leaf: #7fbf6a;
+    --hero-img: 0.45; color-scheme: dark;
+  }
+  [data-theme='light'] {
+    --ink: #f4f0e6; --ink-2: #ebe5d7; --ink-3: #ddd5c3;
+    --paper: #14181e; --dim: #545d68; --faint: #7d858e;
+    --line: rgb(20 24 30 / 0.12); --dot: rgb(20 24 30 / 0.05);
+    --saffron: #c26b0a; --tide: #1d8a7b; --leaf: #3f8a2c;
+    --hero-img: 0.3; color-scheme: light;
+  }
+  body { transition: background-color .4s, color .4s; }
+  html { scroll-behavior: smooth; }
+  body { @apply bg-ink text-paper font-sans antialiased; }
+  ::selection { background: var(--color-saffron); color: var(--color-ink); }
+  html { scrollbar-width: none; }
+  html::-webkit-scrollbar { display: none; }
+}
+
+@layer components {
+  .label { @apply font-mono text-[11px] uppercase tracking-[0.18em] text-dim; }
+  .grain {
+    background-image: radial-gradient(var(--dot) 1px, transparent 1px);
+    background-size: 3px 3px;
+  }
+  .isobars {
+    background-image: repeating-radial-gradient(circle at 70% 40%, transparent 0 38px, var(--dot) 38px 39px);
+  }
+}
+
+@keyframes sweep { to { transform: rotate(360deg); } }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.animate-sweep { animation: sweep 6s linear infinite; }
+.animate-rise { animation: rise 0.9s cubic-bezier(.2,.7,.2,1) both; }

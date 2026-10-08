@@ -1,0 +1,10 @@
+{
+  "description": "Delivers a premium, visually unique frontend design for websites, enhancing user experience with a polished, non-generic interface in a single easy-to-download folder.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
